@@ -1,0 +1,100 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumbs overlay" style="background-image:url({% static 'images/breadcrumb-bg.jpg' %})">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-12">
+				<h2>Contact us</h2>
+			</div>
+			<div class="col-lg-6 col-md-6 col-12">
+				<ul class="bread-list">
+					<li><a href="{% url 'home' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="{% url 'contact' %}">contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Breadcrumb -->
+
+<!-- Contact Us -->
+<section id="contact" class="contact section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 offset-lg-3 col-12">
+				<div class="section-title bg">
+					<h2>Contact <span>Us</span></h2>
+					<p>Do you have any queries or complaints that you would like to address? You can now contact us through the form below and we will respond as soon as possible</p>
+					<div class="icon"><i class="fa fa-paper-plane"></i></div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-12">
+				<div class="form-head">
+					<!-- Contact Form -->
+					<form class="form" action="" method="POST">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="form-group">
+									<i class="fa fa-user"></i>
+									{{form.first_name}}
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="form-group">
+									<i class="fa fa-user"></i>
+									{{form.last_name}}
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-12">
+								<div class="form-group">
+									<i class="fa fa-envelope"></i>
+									{{form.email}}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group message">
+									<i class="fa fa-pencil"></i>
+									{{form.message}}
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-group">
+									<div class="button">
+										<button type="submit" class="btn primary">Send Message</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!--/ End Contact Form -->
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-4 col-12">
+				<div class="contact-right">
+					<!-- Contact-Info -->
+					<div class="contact-info">
+						<div class="icon"><i class="fa fa-map"></i></div>
+						<h3>Our College Location</h3>
+						<p>Address: P. O. Box 20-80403, KWALE</p>
+					</div>
+					<!-- Contact-Info -->
+					<div class="contact-info">
+						<div class="icon"><i class="fa fa-envelope"></i></div>
+						<h3>contact information</h3>
+						<p><a href="kwale.dicece@yahoo.com">kwale.dicece@yahoo.com</a></p>
+						<p>Phone: 0704104378 </p>
+					</div>
+					<!-- Contact-Info -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Contact Us -->
+
+{% endblock %}

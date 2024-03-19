@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<!-- Slider Area -->
+<section class="home-slider">
+    <div class="slider-active">
+        <!-- Single Slider -->
+        <div class="single-slider overlay">
+            <div class="slider-image" style="background-image:url({% static 'images/dicecegraduation.png' %})">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-10 col-12">
+                            <!-- Slider Content -->
+                                <div class="slider-content">
+                                    <h1 class="slider-title"><span>Quality ECDE Services to ensure a brighter future for later generations</span>
+                                    <b>Kwale DICECE ECDE Teachers' Training College</b>
+                                    </h1>
+                                    <p class="slider-text">Thank you for considering Kwale DICECE ECDE Teachers Training College
+                                    as your pathway to a positive and productive future. Whether you are considering a
+                                    diploma, or certificate, or Proficiency or simply taking courses to upgrade your skills,
+                                    we stand ready to help you reach your educational goals.</p>
+                            
+                                    <!-- Button -->
+                                    <div class="button">
+                                        <a href="{% url 'loginPage' %}" class="btn white">Login</a>
+                                        <a href="{% url 'registerPage' %}" class="btn white primary">Sign Up</a>
+                                     </div>
+                            <!--/ End Button -->
+                                </div>
+                            <!--/ End Slider Content -->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </div>
+</section>
+<!--/ End Slider Area -->
+
+
+
+{%endblock%}

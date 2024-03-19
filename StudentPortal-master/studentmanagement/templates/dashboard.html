@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<main class="container p-10">
+
+    {% if messages %}
+    <div class="alert alert-success" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div container>
+        <div class="row">
+            <div class="col-md">
+                <div class="card text-center text-black  mt-10 mb-3 ml-3 mr-3" id="total-students">
+                    <div class="card-header">
+                        <h5 class="card-title">Total Number of Students</h5>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ total_students }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container bg-light p-5 rounded">
+        <br>
+        <!--  Start of row -->
+        <div class="row">
+            <p class="h3 mb-2">Student Search Filter:</p>
+            <!-- Search-Form column "card card-body ml-5 mr-5 mt-5"-->
+            <!-- <div class="col-sm-2">
+                    <form method='POST' action=''>
+                        {% csrf_token %}
+                        {{form |crispy}}
+                        <input class="btn btn-primary" type="submit" value='Search' />
+                    </form>
+            </div> -->
+            <form class="row g-3" action="{% url 'search' %}" method="GET">
+                <div class="col-auto">
+                    <label for="inputText" class="visually-hidden">Search</label>
+                    <input type="text" name="keyword" class="form-control" placeholder="Search for Student"
+                        required>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" value="Search" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+            <!--End of Search-Form column-->
+
+            <hr>
+            <br>
+            <!-- List of Items column-->
+            <div class="col-sm-12 text-black">
+                <div class="display_table">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>COUNT</th>
+                                <th>STUDENT NAME</th>
+                                <th>REG NUMBER</th>
+                                <th>PHONE</th>
+                                <th>EMAIL</th>
+                                <th>COURSE NAME </th>
+                                <th>COURSE LEVEL</th>
+                                <th>KNEC EXAM RESULTS</th>
+                                <th>FEE STATUS</th>
+                                <th>CERTIFICATE STATUS</th>
+                                <th>DELETE STUDENT</th>
+                            </tr>
+                        </thead>
+                        {% for student in student_list %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{student.full_name}}</td>
+                            <td>{{student.reg_number}}</a></td>
+                            <td>{{student.phone}}</a></td>
+                            <td>{{student.email}}</a></td>
+                            <td>{{student.course_name}}</a></td>
+                            <td>{{student.course_level}}</td>
+                            <td><a href="{% url 'update_exam_results' student.id %}">{{student.results}}</a></td>
+                            <td><a href="{% url 'student_details' student.id %}">{{student.fee_status}}</a></td>
+                            <td><a href="{% url 'update_cert' student.id %}">{{student.cert_status}}</a></td>
+                            <td><a href="{% url 'delete_students' student.id %}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red"
+                                        class="bi bi-archive" viewBox="0 0 16 16">
+                                        <path
+                                            d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" />
+                                        Delete
+                                    </svg>
+                                </a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <br>
+            <hr>
+
+            <!-- PAGINATION -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    {% if student_list.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+                    <li class="page-item"><a class="page-link"
+                            href="?page={{student_list.previous_page_number}}">Previous</a></li>
+                    {% endif %}
+
+                    <!-- <li class="page-item disabled"><a href="#" class="page-link">Page {{student_list.number}} of {{student_list.paginator.num_pages}}</a></li>-->
+
+                    {% for i in nums %}
+                    <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                    {% endfor %}
+
+                    {% if student_list.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{student_list.next_page_number}}">Next</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="?page={{student_list.paginator.num_pages }}">Last
+                            &raquo</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+
+            <!--End of List of Items column-->
+            <!--End of Row-->
+            <br>
+        </div>
+    </div>
+
+</main>
+{% endblock %}

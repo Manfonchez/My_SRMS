@@ -1,0 +1,54 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<div class="breadcrumbs overlay" style="background-image:url({% static 'images/breadcrumb-bg.jpg' %})">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-12">
+                <h2>Our Teachers</h2>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="bread-list">
+                    <li><a href="{% url 'home' %}">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="{% url 'about' %}">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Breadcrumb -->
+
+<!-- Teachers -->
+<section class="teachers archive section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="section-title bg">
+                    <h2>Our <span>School</span></h2>
+                    <p>We are pleased to serve your educational needs through our school based in-service training classes. We look forward soon to offer full time training programs that shall take shorter time than now. Our college is one of the initial 42 Public ECDE colleges in the country and the only public ECDE Teachers training College in the Kwale County. As a college that uses the DICECE curriculum, we are committed to supporting the economic development of our state by providing educational and workforce training services to meet local needs</p>
+                    <div class="icon"><i class="fa fa-users"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-12">
+                <div class="section-title bg">
+                    <img src="{% static 'images/dicecegraduation.png' %}" alt="">
+                    <p><b>Kwale DICECE graduands of 2006/2007 Academic year at Waa Girls High School</b></p>
+                    <br><br>
+                    <p>Kwale DICECE ECDE Teachers’ Training College is a two-year, post-secondary institution which is recognized  and registered by the Ministry of Education to offer ECDE courses.</p>
+                    <br>
+                    <p>Early childhood programs prepare students to work with children and families in child development centers, family or group homes or agencies.  Employment opportunities include ECDE teacher in both public and private Preschools, ECDE teacher in childcare centers, Children’s’ home and day care centers.  Individual and group graduands can initiate their own ECDE Centers.</p>
+                    <br>
+                    <p>The programs cover not only early childhood teaching methodologies, but also provide the graduate with the business skills needed for these positions. Coursework in administration and management of ECDE is incorporated to provide the necessary skills to effective operate an ECDE center or day care facility.
+                        </p>
+                    <div class="icon"><i class="fa fa-users"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Teachers -->
+
+{% endblock %}

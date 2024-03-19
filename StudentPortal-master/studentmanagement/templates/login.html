@@ -1,0 +1,209 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!--
+		<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: white !important;
+		}
+		.user_card {
+			width: 350px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: #74cfbf;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #33ccff !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+
+		#messages{
+			background-color: grey;
+			color: #fff;
+			padding: 10px;
+			margin-top: 10px;
+		}
+	</style>
+
+-->
+
+    <div class="breadcrumbs overlay" style="background-image:url({% static 'images/breadcrumb-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h2>Login To Kwale DICECE</h2>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="bread-list">
+                        <li><a href="{% url 'home' %}">Home<i class="fa fa-angle-right"></i></a></li>
+                        <li class="active"><a href="{% url 'loginPage' %}">Signin</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+<!--
+
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+
+
+					<h5 id="form-title">Signin</h5>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="">
+                        {% csrf_token %}
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+								<input type="password" name="password" placeholder="Password..." class="form-control" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn" type="submit" value="Login">
+				   			</div>
+						</form>
+
+				</div>
+				
+				{{form.errors}}
+
+				{% for message in messages %}
+    			<p class="text-black" id="messages">{{ message }}</p>
+    			{% endfor %}
+
+				
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Don't have an account? <a href="{% url 'registerPage' %}" class="ml-2">Sign Up</a>
+					</div>
+				</div>
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						Forgot Your Password? <a href="{% url 'reset_password' %}" class="ml-2">Reset Password</a>
+					</div>
+			
+				</div>
+			</div>
+		</div>
+	</div>
+-->
+
+<style>
+    .container-fluid {
+        max-width: 100%;
+    }
+</style>
+
+<div class="bg-light p-5 rounded">
+	<div class="container">
+		{% if messages%}
+			{% for message in messages%}
+				<div class="alert alert-{{message.tags}}">
+    				{{message}}
+				</div>
+            {%endfor%}
+        {% endif %}
+		
+			<div class="card">
+				<div class="card-body pb-3">
+				<div class="col-6 offset-4 mb-5 mt-5">
+            		<form method="POST" action="">
+					{% csrf_token %}
+					<p class="h5">Signin to the School System:</p>
+						<div class="input-group mb-3">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<input type="text" name="username" placeholder="Username..." class="form-control">
+						</div>
+					<div class="input-group mb-2">
+						<div class="input-group-append">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" name="password" placeholder="Password..." class="form-control" >
+					</div>
+		
+					<div class="d-flex justify-content-center mt-3 login_container">
+						<input class="btn btn-info" type="submit" value="Login">
+					</div>
+								<br>
+								<br>
+                    <p class="small font-weight-bold text-center pb-3">
+                        <a href="{% url 'registerPage' %}">Don't have an account yet ? Create one with us</a>
+                    </p>
+
+					<p class="small text-center pt-4">
+						<a href="{% url 'reset_password' %}">Forgotten Password? </a>
+					</p>
+
+                    <hr class="mb-3">
+                    <p class="small text-center">By signing in to your account, you agree to Blog
+						 <a href="">Terms of Service</a> and consent to our <a href="">Cookie Policy</a> and <a href="">Privacy Policy</a>. This site is not
+                                    protected
+                                    by reCAPTCHA and
+                                    is a demonstration website
+                                    for learning purposes only.
+                                </p>
+                </form>
+				</div>
+			</div>
+        </div>
+	</div>
+</div>
+
+{%endblock%}

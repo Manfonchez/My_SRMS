@@ -1,0 +1,78 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<section class="p-5">
+    <div class="breadcrumbs overlay" style="background-image:url({% static 'images/breadcrumb-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-12">
+                    <h2>My Personal Dashboard</h2>
+                </div>
+                <div class="col-lg-6 col-md-6 col-12">
+                    <ul class="bread-list">
+                        <li><a href="{% url 'student_page' %}">My Dashboard<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="{% url 'account_settings' %}">Update My Profile<i class="fa fa-angle-right"></i></a></li>
+                        <li><a href="{% url 'password_change' %}">Change my password<i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row g-4">
+        <div class="col-md">
+            <div class="card card-body ml-3">
+                <h5 class="text-center">STUDENT: {{ student.full_name}}</h5>
+                <hr>
+                <p>REG NUMBER: <strong> {{student.reg_number}} </strong></p>
+                <p>PHONE NUMBER: <strong>{{student.phone}}</strong></p>
+                <p>EMAIL: <strong> {{student.email}} </strong></p>
+                <p>COURSE NAME: <strong> {{student.course_name}} </strong></p>
+                <p>COURSE LEVEL: <strong> {{student.course_level}} </strong></p>
+            
+            </div>
+        </div>
+    
+        <div class="col-md">
+            <div class="card card-body">
+                <h5 class="text-center">FEE DETAILS</h5>
+                <hr>
+                <p>Fee Required: <strong> KES {{ student.fee_required }}</strong> </p>
+                <p>Fee Amount Paid: <strong> KES {{ student.fee_paid }}</strong> </p>
+                <p>Fee Balance: <strong> KES {{ student.fee_balance }}</strong> </p>
+                <br><br>
+
+            </div>
+        </div>
+    
+        <div class="col-md">
+            <div class="card card-body mr-3">
+                <h5 class="text-center"> FEE STATUS </h5>
+                <hr>
+                <h1 style="text-align: center;padding: 10px">{{ student.fee_status }}</h1>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body mr-3">
+                <h5 class="text-center"> KNEC EXAM RESULTS </h5>
+                <hr>
+                <h1 style="text-align: center;padding: 10px">{{ student.results }}</h1>
+            </div>
+        </div>
+
+        <div class="col-md">
+            <div class="card card-body mr-3">
+                <h5 class="text-center">CERTICATE STATUS </h5>
+                <hr>
+                <h1 style="text-align: center;padding: 10px">{{ student.cert_status }}</h1>
+            </div>
+        </div>
+    </div>
+</div>
+    </section>
+{% endblock %}
